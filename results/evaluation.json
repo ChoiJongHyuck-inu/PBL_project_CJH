@@ -1,0 +1,63 @@
+{
+  "note": "Evaluation on four collected scenario files; not an independent generalization test.",
+  "confusion_matrix_binary": {
+    "TP": 3,
+    "TN": 1,
+    "FP": 0,
+    "FN": 0
+  },
+  "metrics_binary": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0
+  },
+  "exact_class_accuracy": 1.0,
+  "scenarios": [
+    {
+      "scenario": "normal",
+      "ground_truth": "NORMAL",
+      "prediction": "NORMAL",
+      "correct": true,
+      "attempts": 9,
+      "skipped": 0,
+      "triggered_rules": []
+    },
+    {
+      "scenario": "abnormal_1",
+      "ground_truth": "UNAUTHORIZED_EGRESS",
+      "prediction": "UNAUTHORIZED_EGRESS",
+      "correct": true,
+      "attempts": 1,
+      "skipped": 0,
+      "triggered_rules": [
+        "R1_UNAUTHORIZED_EGRESS"
+      ]
+    },
+    {
+      "scenario": "abnormal_2",
+      "ground_truth": "DESTINATION_FANOUT",
+      "prediction": "DESTINATION_FANOUT",
+      "correct": true,
+      "attempts": 10,
+      "skipped": 0,
+      "triggered_rules": [
+        "R1_UNAUTHORIZED_EGRESS",
+        "R2_DESTINATION_FANOUT"
+      ]
+    },
+    {
+      "scenario": "abnormal_3",
+      "ground_truth": "MULTI_PORT_SCAN",
+      "prediction": "MULTI_PORT_SCAN",
+      "correct": true,
+      "attempts": 42,
+      "skipped": 0,
+      "triggered_rules": [
+        "R1_UNAUTHORIZED_EGRESS",
+        "R2_DESTINATION_FANOUT",
+        "R3_MULTI_PORT_SCAN"
+      ]
+    }
+  ]
+}

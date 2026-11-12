@@ -1,0 +1,4 @@
+configuration,TP,TN,FP,FN,binary_f1,exact_type_accuracy
+R1_ONLY,5,2,0,0,1.0,0.4286
+R1_R2,5,2,0,0,1.0,0.5714
+R1_R2_R3,5,2,0,0,1.0,1.0

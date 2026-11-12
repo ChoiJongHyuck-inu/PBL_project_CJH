@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Hubble logs
+results/raw/
+results/parsed/
+results/normalized/
+results/*.log
+
+# Temporary files
+.DS_Store
+*.tmp
