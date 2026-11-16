@@ -110,10 +110,68 @@ Python dependencies:
 - DROPPED 이벤트는 공격 성공을 의미하지 않습니다.
 - 독립적인 테스트 데이터에서의 일반화 성능은 검증되지 않았습니다.
 
-## 8. Acknowledgements
+## 8. Automated Testing
+
+Kubernetes 클러스터 없이도 공개된 합성 Hubble 로그를 이용하여
+분석 파이프라인의 기본 동작을 확인할 수 있습니다.
+
+### Run All Tests
+
+    python3 -m pip install -r requirements.txt
+    bash scripts/run_tests.sh
+
+The automated suite includes:
+
+- 7 detector unit tests
+- 5 parser and normalizer unit tests
+- 4 synthetic JSONL validation checks
+- 4 end-to-end scenario checks
+
+### Individual Commands
+
+Generate synthetic Hubble events:
+
+    python3 scripts/generate_fixtures.py
+
+Run unit tests:
+
+    python3 -m unittest discover -s tests -v
+
+Validate synthetic logs:
+
+    python3 scripts/validate_logs.py tests/fixtures/*.jsonl
+
+Run the complete analysis pipeline on synthetic logs:
+
+    python3 scripts/smoke_test.py
+
+### Continuous Integration
+
+GitHub Actions runs the automated test suite on
+push and pull request events.
+
+Workflow: .github/workflows/tests.yml
+
+The synthetic fixtures are functionality test inputs.
+They are separate from the seven collected scenarios
+used in the experimental evaluation.
+
+## 9. Technical Documentation
+
+Additional documentation is available in the docs directory.
+
+- [System Architecture](docs/ARCHITECTURE.md)
+- [Detection Rules](docs/DETECTION_RULES.md)
+- [Experiments and Results](docs/EXPERIMENTS.md)
+- [Limitations and Future Work](docs/LIMITATIONS.md)
+
+The original Hubble logs are excluded from this repository.
+Full experimental reproduction requires separately collected logs.
+
+## 10. Acknowledgements
 
 실습 환경 및 기본 공격 시나리오 출처:
 
 https://github.com/cclab-inu/Practical-Cloud-Security-PBL
 
-본 저장소는 해당 실습의 Category 2를 확장하여 직접 구현한 Python 기반 로그 분석 및 네트워크 이상 탐지 시스템입니다.
+본 저장소는 해당 실습의 Category 2 환경을 바탕으로 한 Python 기반 로그 분석 및 네트워크 이상 탐지 프로젝트입니다.
